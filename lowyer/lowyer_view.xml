@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+         <record id="cust_pay_show" model="ir.actions.act_window">
+            <field name="name">Pay off Customer</field>
+            <field name="res_model">lowyer.paycust</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="cust_pay_form" model="ir.ui.view">
+            <field name="name">lowyer.paycust.form</field>
+            <field name="model">lowyer.paycust</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+
+                             <field name="idcust"/>
+
+                             <field name="idtrans" string="Name Transaction"/>
+
+                            <field name="idpayamount">
+                                    <tree>
+                                         <field name="date" widget="Date"/>
+                                        <field name="amount" string="Amount"/>
+                                        <field name="notes" string="Notes"/>
+                                         <field name="idtrans" string="Transaction New"/>
+                                    </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+         <record id="lowyer_ahkam_kanban_view" model="ir.ui.view">
+            <field name="name">lowyer.ahkam.kanban.view</field>
+            <field name="model">lowyer.ahkam</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="idtrns">
+                    <field name="idtrns"/>
+                    <field name="court"/>
+                     <field name="tot"/>
+                     <field name="deg"/>
+
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                 <t>
+                                    <img class="o_kanban_image" alt="Avatar"
+                                         t-att-src='_s + "/base/static/img/avatar.png"'/>
+                                </t>
+                                <div class="oe_kanban_details">
+                                    <strong class="o_kanban_record_title">
+                                        <!--<field name="display_name"/>-->
+                                         <field name="court"/>
+                                    </strong>
+                                    <div class="o_kanban_tags_section"/>
+                                    <ul>
+                                        <li>name : <field name="idtrns"/></li>
+
+
+                                        <li>
+                    <field name="deg" widget="gauge" style="width:80px;height:50px;cursor:pointer;"
+                           options="{'max_field': 'tot'}">
+                                   Entry Progress
+                    </field>
+                </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+
+                </kanban>
+            </field>
+        </record>
+
+
+
+        <record id="sale.action_quotations_with_onboarding" model="ir.actions.act_window">
+            <field name="name">Quotations Esam</field>
+        </record>
+
+        <record id="sale.menu_sale_quotations" model="ir.ui.menu">
+            <field name="name">New Quotations Esam</field>
+            <field name="sequence">100</field>
+        </record>
+
+        <menuitem id="sale.menu_sale_order"
+            name="New Orders Esam"
+            action="sale.action_orders"
+            parent="sale.sale_order_menu"
+            sequence="200" groups="sales_team.group_sale_salesman"/>
+
+
+        <record id="transaction_for_customers" model="ir.actions.act_window">
+            <field name="name">Transaction Customer</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">lowyer.trans</field>
+            <field name="domain">[('idCust', 'in', active_ids)]</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="lowyer.lowyer_trans_tree"/>
+            <field name="binding_model_id" ref="model_lowyer_customer"/>
+        </record>
+
+
+
+
+
+
+        <record id="customer_show" model="ir.actions.act_window">
+            <field name="name">Customer</field>
+            <field name="res_model">lowyer.customer</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="lowyer_show" model="ir.actions.act_window">
+            <field name="name">Lowyer</field>
+            <field name="res_model">lowyer.lowyeres</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="twkel_show" model="ir.actions.act_window">
+            <field name="name">Twkel</field>
+            <field name="res_model">lowyer.twkel</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="type_show" model="ir.actions.act_window">
+            <field name="name">type</field>
+            <field name="res_model">lowyer.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="trans_show" model="ir.actions.act_window">
+            <field name="name">Transaction</field>
+            <field name="res_model">lowyer.trans</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,calendar,graph,pivot,timeline</field>
+        </record>
+
+        <record id="manag_show" model="ir.actions.act_window">
+            <field name="name">administrative works</field>
+            <field name="res_model">lowyer.manag.work</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="roles_execute_show" model="ir.actions.act_window">
+            <field name="name">Roles Of Execute</field>
+            <field name="res_model">lowyer.ahkam</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <record id="roles_execute_form" model="ir.ui.view">
+            <field name="name">roles.execute.form</field>
+            <field name="model">lowyer.ahkam</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="idtrns"/>
+                            </group>
+                            <group>
+                                <field name="opp_name" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="opp_address" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="court" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="cust_name" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="dt_session"/>
+                            </group>
+                            <group>
+                                <field name="judgment"/>
+                            </group>
+                            <group>
+                                <field name="inv_num"/>
+                            </group>
+                            <group>
+                                <field name="oppos_date"/>
+                            </group>
+                            <group>
+                                <field name="inv_num2"/>
+                            </group>
+                            <group>
+                                <field name="appeal_date"/>
+                            </group>
+                            <group>
+                                <field name="inv_num3"/>
+                            </group>
+                            <group>
+                                <field name="appeal_appos_date"/>
+                            </group>
+                            <group>
+                                <field name="final"/>
+                            </group>
+                            <group>
+                                <field name="sv"/>
+                            </group>
+                            <group>
+                                 <field name="deg"  widget="percentpie"/>
+                            </group>
+
+
+
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="lowyer_ahkam_tree" model="ir.ui.view">
+            <field name="name">lowyer.ahkam.tree</field>
+            <field name="model">lowyer.ahkam</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="idtrns"/>
+                    <field name="dt_session"/>
+                    <field name="judgment"/>
+                    <field name="inv_num"/>
+                    <field name="oppos_date"/>
+                    <field name="inv_num2"/>
+                    <field name="appeal_date"/>
+                    <field name="inv_num3"/>
+                    <field name="appeal_appos_date"/>
+                    <field name="final"/>
+                    <field name="deg" widget="progressbar"/>
+                    <field name="sv"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="manag_show_tree" model="ir.ui.view">
+            <field name="name">lowyer.manag.work.tree</field>
+            <field name="model">lowyer.manag.work</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="transDate" string="transDate"/>
+                    <field name="notes" string="notes"/>
+                    <field name="idlower" string="Lower Name"/>
+                    <field name="complete" string="complete"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="lowyeres_show_tree" model="ir.ui.view">
+            <field name="name">lowyer.lowyeres.tree</field>
+            <field name="model">lowyer.lowyeres</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="seq_id" string="Sequence"/>
+                    <field name="name" string="Name"/>
+                    <field name="idTrans" string="Transactions" widget="many2many_tags"/>
+                    <field name="GraduationDate" string="Graduation Date"/>
+                    <field name="University" string="University"/>
+                    <field name="address" string="Address"/>
+                    <field name="phone" widget="phone" string="Phone"/>
+                    <field name="phone2" widget="phone" string="Phone"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="trans_show_domain" model="ir.actions.act_window">
+            <field name="name">Transaction</field>
+            <field name="res_model">lowyer.trans</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('idLowyer','=',active_id)]</field>
+            <field name="context">{}</field>
+        </record>
+
+
+        <record id="customer_show_form" model="ir.ui.view">
+            <field name="name">lowyer.customer.form</field>
+            <field name="model">lowyer.customer</field>
+            <field name="arch" type="xml">
+                <form string="Customer">
+                    <header>
+
+                                <button class="oe_highlight" type="object"
+                                        name="show_total_collection" string="Calc Esam" groups="base.group_no_one"/>
+                                <button name="print_report" type="object" string="Print" class="oe_highlight"/>
+                         <button name="delAuthentication" type="object" string="Del Authentication" class="oe_highlight"/>
+                         <button name="delAuthentication2" type="object" string="Del Authentication2" class="oe_highlight"/>
+
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="seq_id" readonly="1"/>
+                            </h1>
+                        </div>
+
+                        <!--<xpath expr="//group" position="after">-->
+                            <!--<group>-->
+                                <!--<button class="oe_highlight" type="object"-->
+                                        <!--name="show_total_collection" string="Calc Esam" groups="base.group_no_one"/>-->
+
+                                <!--<button name="print_report" type="object" string="Print" class="oe_highlight"/>-->
+                            <!--</group>-->
+                        <!--</xpath>-->
+
+                        <group>
+                            <field name="name"/>
+                        </group>
+
+                        <group>
+                            <field name="jop"/>
+                        </group>
+
+                        <group>
+                            <field name="address"/>
+                        </group>
+                        <group>
+                            <field name="email"/>
+                        </group>
+
+
+                        <group>
+                            <field name="idTwks">
+                                <tree>
+                                    <field name="twkNo"/>
+                                    <field name="harf"/>
+                                    <field name="year"/>
+                                    <field name="karyMonth"/>
+                                </tree>
+                            </field>
+                        </group>
+
+
+
+                    </sheet>
+
+
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread" option="{'post_refresh': 'recipients'}"/>
+                    </div>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="lowyer_twkel_tree" model="ir.ui.view">
+            <field name="name">lowyer.twkel.tree</field>
+            <field name="model">lowyer.twkel</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="twkNo" string="Authorization number"/>
+                    <field name="idCst" string="Customer Name"/>
+                    <field name="harf" string="character"/>
+                    <field name="year" string="Year"/>
+                    <field name="karyMonth" string="Real estate month"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="lowyer_customer_tree" model="ir.ui.view">
+            <field name="name">lowyer.customer.tree</field>
+            <field name="model">lowyer.customer</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="seq_id" string="Code"/>
+
+                    <field name="name" string="Customer Name"/>
+
+                    <field name="jop" string="jop"/>
+                    <field name="address" string="address"/>
+                    <field name="email" string="email"/>
+                    <field name="idTwks" string="Authentication" widget="many2many_tags"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="lowyer_lowyeres_form" model="ir.ui.view">
+            <field name="name">lowyer.lowyeres.form</field>
+            <field name="model">lowyer.lowyeres</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_open_trans" type="object" class="oe_stat_button" icon="fa-calendar">
+                                <field name="count" string="Transaction" widget="statinfo"/>
+                            </button>
+
+                            <button name="%(trans_show_domain)d" type="action" class="oe_stat_button" icon="fa-usd">
+                                <field name="count" string="Transaction" widget="statinfo"/>
+                            </button>
+
+
+                            <button name="toggle_active" type="object" groups="hr.group_hr_user" class="oe_stat_button"
+                                    icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                       options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                            </button>
+
+
+                        </div>
+
+                        <div class="oe_title">
+                            <h1>
+                                <field name="seq_id" readonly="1"/>
+                            </h1>
+                        </div>
+
+                        <group>
+
+                        <group>
+                            <field name="name"/>
+                        </group>
+
+                            <group>
+                            <field name="experience" widget="float_toggle" options='{"range":[0,1,2,3,4,5,6,7,8,9,10]}'/>
+                        </group>
+
+
+
+                        <group>
+                            <field name="Nickname"/>
+                        </group>
+
+                            <group>
+                            <field name="partner_id"/>
+                        </group>
+                            <group>
+                            <field name="order_id"/>
+                        </group>
+
+
+
+
+
+                            <group>
+                                <field name="GraduationDate" options='{"datepicker":{"daysOfWeekDisabled":[5]}}'/>
+                            </group>
+                            <group>
+                                <field name="College"/>
+                            </group>
+                            <group>
+                                <field name="University"/>
+                            </group>
+
+
+                        <group>
+                            <field name="address"/>
+                        </group>
+
+
+
+
+                            <group>
+                                <field name="phone"/>
+                            </group>
+
+                            <group>
+                                <field name="phone2"/>
+                            </group>
+
+
+                        <group>
+                            <field name="Academic_qualifications"/>
+                        </group>
+
+                        <group>
+                            <field name="prior_experiences"/>
+                        </group>
+
+                        <group>
+                            <field name="salary"/>
+                        </group>
+
+                             <group>
+                            <field name="degree"/>
+                        </group>
+
+
+
+                        <group>
+                            <field name="image"/>
+                        </group>
+
+</group>
+
+                    </sheet>
+
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread" option="{'post_refresh': 'recipients'}"/>
+                    </div>
+
+                </form>
+            </field>
+        </record>
+
+
+        <menuitem name="System LOWYER" id="system"/>
+
+        <menuitem name="Insert Transient" id="insertt" parent="system"/>
+        <menuitem name="LOWYERS" id="lowyerss" parent="insertt" action="lowyer_transient_show"/>
+        <menuitem name="Authentication" id="authentication" parent="insertt" action="twkel_transient_show"/>
+
+        <menuitem name="Accounts" id="accounts" parent="system"/>
+        <menuitem name="Pay off Customers" id="pay_off_customers" parent="accounts" action="cust_pay_show"/>
+
+        <menuitem name="Transaction" id="transaction" parent="system"/>
+        <menuitem name="lOWYERS" id="lOWERS" parent="transaction" action="lowyer_show"/>
+        <menuitem name="Customer" id="customer" parent="transaction" action="customer_show"/>
+        <menuitem name="Twkel" id="twkel" parent="transaction" action="twkel_show"/>
+        <menuitem name="Type" id="type" parent="transaction" action="type_show"/>
+        <menuitem name="Transactions" id="trans" parent="transaction" action="trans_show"/>
+        <menuitem name="administrative works" id="manag" parent="transaction" action="manag_show"/>
+        <menuitem name="Roles For Execute" id="roles_execute_x" parent="transaction" action="roles_execute_show"/>
+
+
+    </data>
+</odoo>
+

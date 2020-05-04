@@ -1,0 +1,26 @@
+{
+    'name': "LOWYER",
+    'author': "EL-NAWAS",
+    'sequence': 4,
+    'depends': [
+        'mail','board','web_timeline','muk_web_searchpanel','sale_management',
+    ],
+    "data": ['lowyer_view.xml',
+             'data/sequence.xml',
+             'data/cron.xml',
+             'lowyer_template_mail.xml',
+             'lowyer_board.xml',
+             'lowyer_view_trans.xml',
+             'lowyer_transient.xml',
+             'report/lowyer_view.xml',
+             'report/lowyer_reports.xml',
+             'report/lowey_lowyer_templete.xml',
+             'report/lowyer_lowyer_view.xml',
+             'report/lowyer_customer_templete.xml',
+             'report/lowyer_customer_view.xml',
+
+             ],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}

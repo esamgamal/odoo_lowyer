@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="lowyer_lowyer_transient_form" model="ir.ui.view">
+        <field name="name">lowyer.lowyer.transient.form</field>
+        <field name="model">lowyer.lowyer.transient</field>
+        <field name="arch" type="xml">
+            <form string="create Lowyer">
+                <group>
+                    <field name="name_2"/>
+                    <field name="Grad_2"/>
+                    <field name="phone_2"/>
+                </group>
+                <footer>
+                    <button name="create_lowyer_trs" string="Create" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+<record id="twkel_transient_form" model="ir.ui.view">
+        <field name="name">twkel.transient.form</field>
+        <field name="model">lowyer.twkel.transient</field>
+        <field name="arch" type="xml">
+            <form string="create Authentication">
+                <group>
+                    <field name="idCst"/>
+                    <field name="twkNo"/>
+                    <field name="harf"/>
+                    <field name="year"/>
+                    <field name="karyMonth"/>
+                </group>
+                <footer>
+                    <button name="create_twkel_trs" string="Create" type="object" class="btn-primary"/>
+                    <button name="get_twkel_trs" string="loop authentication" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="lowyer_transient_show" model="ir.actions.act_window">
+        <field name="name">Create Lowey</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lowyer.lowyer.transient</field>
+        <field name="view_model">form</field>
+        <field name="view_id" ref="lowyer_lowyer_transient_form"/>
+        <field name="target">new</field>
+    </record>
+
+
+    <record id="twkel_transient_show" model="ir.actions.act_window">
+        <field name="name">Create Authentication</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lowyer.twkel.transient</field>
+        <field name="view_model">form</field>
+        <field name="view_id" ref="twkel_transient_form"/>
+        <field name="target">new</field>
+    </record>
+
+
+</odoo>
+

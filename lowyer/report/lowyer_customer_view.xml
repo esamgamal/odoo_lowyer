@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report id="action_lowyer_customer"
+            string="lowyer report"
+            model="lowyer.customer"
+            report_type="qweb-pdf"
+            name="lowyer.lowyer_customer"
+            file="lowyer.lowyer_customer"
+    />
+
+</odoo>

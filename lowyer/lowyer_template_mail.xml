@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="email_template_lowyers" model="mail.template">
+            <field name="name">Transactions: Send by email</field>
+            <field name="model_id" ref="lowyer.model_lowyer_trans"/>
+            <field name="email_from">${object.idLowyer.email_formatted |safe}</field>
+            <field name="email_to">${object.email}</field>
+            <field name="subject"> Transaction Of Customer (Ref ${object.seq_id})</field>
+            <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px;">
+    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+        Dear ${object.idCust}
+        <br /><br />
+        last update of transaction with refrence ${object.seq_id}
+		<br /><br />
+        opponent  : ${object.khsm}
+		Adjective  : ${object.sfth_khsm}
+		<br /><br />
+        If you have queries feel free to ask.
+    </p>
+</div>
+            </field>
+            <field name="report_template" ref="action_transaction_report"/>
+            <field name="report_name">Transcation_${(object.seq_id)</field>
+        </record>
+    </data>
+</odoo>

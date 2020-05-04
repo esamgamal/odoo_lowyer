@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="act_trans_graph" model="ir.actions.act_window">
+            <field name="name">Transaction graph</field>
+            <field name="res_model">lowyer.trans</field>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="lowyer.lowyer_trans_graph"/>
+        </record>
+        <record id="act_trans_calender" model="ir.actions.act_window">
+            <field name="name">Transaction calender</field>
+            <field name="res_model">lowyer.trans</field>
+            <field name="view_mode">calendar</field>
+            <field name="view_id" ref="lowyer.lowyer_trans_calendar"/>
+        </record>
+        <record id="act_transaction_list" model="ir.actions.act_window">
+            <field name="name">trans</field>
+            <field name="res_model">lowyer.trans</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="dashboard_form_view" model="ir.ui.view">
+            <field name="name">Dashboard form</field>
+            <field name="model">board.board</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Dashboard">
+                    <board style="1-2">
+                        <column>
+                            <action
+                                    string="transaction"
+                                    name="%(lowyer.act_trans_graph)d"/>
+                            <action
+                                    string="transaction record"
+                                    name="%(act_transaction_list)d"/>
+                        </column>
+                        <column>
+                            <action
+                                    string="transaction3"
+                                    name="%(act_trans_calender)d"/>
+                        </column>
+                    </board>
+                </form>
+            </field>
+        </record>
+        <record id="lowyer_dashboard" model="ir.actions.act_window">
+            <field name="name">Dashboard</field>
+            <field name="res_model">board.board</field>
+            <field name="view_mode">form</field>
+            <field name="usage">menu</field>
+            <field name="view_id" ref="dashboard_form_view"/>
+        </record>
+        <menuitem
+                name="Dashboard"
+                parent="lowyer.transaction"
+                action="lowyer_dashboard"
+                sequence="1"
+                id="menu_dashboard"/>
+    </data>
+</odoo>

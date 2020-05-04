@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--
+    <data>
+        <record model="res.config.settings" id="my_config_settingsx">
+            <field name="group_product_variant" eval="0"/>
+        </record>
+
+        <function model="res.config.settings" name="execute">
+            <value eval="[ref('my_config_settingsx')]"/>
+            <value eval="{}"/>
+        </function>
+    </data>
+    -->
+
+
+
+    <data noupdate="0">
+        <record id="in_check_type_cases1" model="check.type.cases">
+            <field name="name">start</field>
+        </record>
+        <record id="in_check_type_cases2" model="check.type.cases">
+            <field name="name">معارضة</field>
+        </record>
+        <record id="in_check_type_cases3" model="check.type.cases">
+            <field name="name">استئناف</field>
+        </record>
+        <record id="in_check_type_cases4" model="check.type.cases">
+            <field name="name">معارضة استئنافية</field>
+        </record>
+    </data>
+
+    <data noupdate="1">
+        <record id="seq_lowyer_customer" model="ir.sequence">
+            <field name="name">Customer Sequence</field>
+            <field name="code">lowyer.customer.sequence</field>
+            <field name="prefix">LC</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_lowyer_lowyer" model="ir.sequence">
+            <field name="name">lowyer Sequence</field>
+            <field name="code">lowyer.lowyer.sequence</field>
+            <field name="prefix">LL</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_lowyer_trans" model="ir.sequence">
+            <field name="name">trans Sequence</field>
+            <field name="code">lowyer.trans.sequence</field>
+            <field name="prefix">TR</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

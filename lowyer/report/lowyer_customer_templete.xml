@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="lowyer_customer">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <br></br>
+                        <br></br>
+                        <h2>Esam Abo El-Nawas</h2>
+                        <p>This Customer name is
+                            <span t-field="o.name"/>
+                        </p>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Power of attorney</th>
+                                    <th>The character</th>
+                                    <th>the year</th>
+                                    <th>Real estate month</th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="twkel_list_tmp" t-as="tk">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <t t-esc="tk['twkNo']"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="tk['harf']"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="tk['year']"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="tk['karyMonth']"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </t>
+                        </table>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

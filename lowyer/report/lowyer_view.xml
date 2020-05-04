@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="lowyer_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.internal_layout">
+                        <h1>
+                            <t t-esc="doc.idCust.name"/>
+                        </h1>
+
+                        <div style="width: 32%; display: inline-table; height:14rem;">
+                            <table class="table table-bordered mb-0" style="border: 2px solid black;">
+                                <tr>
+                                    <td class="text-center align-middle" style="height: 6rem">
+                                        <img alt="Barcode"
+                                             t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', doc.idCust.seq_id, 600, 150)"
+                                             style="width:100%;height::4rem;"/>
+                                        <span t-field="doc.idCust.seq_id"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+
+                        <table class="table table-bordered">
+
+                            <tr>
+                                <th>year</th>
+                                <th>cort</th>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <t t-esc="doc.year"/>
+                                </td>
+
+                                <td>
+                                    <t t-esc="doc.court"/>
+                                </td>
+                            </tr>
+
+
+                        </table>
+
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

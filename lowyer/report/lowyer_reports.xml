@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report id="action_transaction_report"
+            string="Transaction report"
+            model="lowyer.trans"
+            report_type="qweb-pdf"
+            name="lowyer.lowyer_report"
+            file="lowyer.lowyer_report"
+    />
+
+</odoo>
+
